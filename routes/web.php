@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\ActivityTypeController;
+use App\Http\Controllers\ActivityController;
 
 Route::get('/', [ActivityTypeController::class, 'index'])
     ->name('home');
+
+Route::get('/activities', [ActivityController::class, 'index']);
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
