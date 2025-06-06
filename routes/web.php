@@ -8,7 +8,8 @@ use App\Http\Controllers\ActivityController;
 Route::get('/', [ActivityTypeController::class, 'index'])
     ->name('home');
 
-Route::get('/activities', [ActivityController::class, 'index']);
+Route::get('/activities', [ActivityController::class, 'index'])
+    ->name('activities');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

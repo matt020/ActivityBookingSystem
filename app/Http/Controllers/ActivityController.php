@@ -7,9 +7,10 @@ use App\Models\Activity;
 
 class ActivityController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $activities = Activity::all();
-        return view('activities', compact('activities'));
+        return view('activities', [
+            'selectedType' => $request->query('type')
+        ]);
     }
 }
