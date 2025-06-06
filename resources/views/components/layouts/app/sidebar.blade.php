@@ -8,13 +8,13 @@
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
             <a href="{{ route('home') }}" class="me-5 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
-                <flux:heading>Activity Booking System</flux:heading>
+                <flux:heading>{{ config('app.name') }}</flux:heading>
             </a>
 
             <flux:navlist variant="outline">
                 <flux:navlist.group class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Home') }}</flux:navlist.item>
-                    <flux:navlist.item icon="magnifying-glass" :href="route('activities')" :current="request()->routeIs('activities')" wire:navigate>{{ __('Activities') }}</flux:navlist.item>
+                    <flux:navlist.item icon="magnifying-glass" :href="route('dashboard.activities')" :current="request()->routeIs('dashboard.activities')" wire:navigate>{{ __('Activities') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

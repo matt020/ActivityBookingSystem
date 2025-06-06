@@ -13,4 +13,11 @@ class ActivityController extends Controller
             'selectedType' => $request->query('type')
         ]);
     }
+
+    public function dashboard(Request $request)
+    {
+        return view('dashboard-activities', [
+            'selectedType' => $request->query('type')
+        ]);
+    }
 }
