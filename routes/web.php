@@ -8,12 +8,12 @@ use App\Http\Controllers\ActivityController;
 Route::get('/', [ActivityTypeController::class, 'index'])
     ->name('home');
 
-Route::get('activities', [ActivityController::class, 'index'])
-    ->name('activities');
-
 Route::get('dashboard', [ActivityTypeController::class, 'dashboard'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::get('activities', [ActivityController::class, 'index'])
+    ->name('activities');
 
 Route::get('dashboard/activities', [ActivityController::class, 'dashboard'])
     ->middleware(['auth', 'verified'])

@@ -9,15 +9,13 @@ class ActivityController extends Controller
 {
     public function index(Request $request)
     {
-        return view('activities', [
-            'selectedType' => $request->query('type')
-        ]);
+        $layout = 'layouts.home';
+        return view('activities', ['selectedType' => $request->query('type'), 'layout' => $layout]);
     }
 
     public function dashboard(Request $request)
     {
-        return view('dashboard-activities', [
-            'selectedType' => $request->query('type')
-        ]);
+        $layout = 'layouts.app';
+        return view('activities', ['selectedType' => $request->query('type'), 'layout' => $layout]);
     }
 }

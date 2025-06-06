@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ActivityType;
+use Illuminate\Http\Request;
 
 class ActivityTypeController extends Controller
 {
     public function index()
     {
         $activityTypes = ActivityType::all();
-        return view('welcome', compact('activityTypes'));
+        $layout = 'layouts.home';
+        return view('activity-types', compact('activityTypes', 'layout'));
     }
 
     public function dashboard()
     {
         $activityTypes = ActivityType::all();
-        return view('dashboard', compact('activityTypes'));
+        $layout = 'layouts.app';
+        return view('activity-types', compact('activityTypes', 'layout'));
     }
 }

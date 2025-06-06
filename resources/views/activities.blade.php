@@ -1,3 +1,3 @@
-<x-layouts.primary>
+<x-dynamic-component :component="$layout">
     <livewire:activity-filter :type="$selectedType"/>
-</x-layouts.primary>
+</x-dynamic-component>
