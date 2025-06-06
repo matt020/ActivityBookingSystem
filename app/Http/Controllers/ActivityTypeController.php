@@ -12,4 +12,10 @@ class ActivityTypeController extends Controller
         $activityTypes = ActivityType::all();
         return view('welcome', compact('activityTypes'));
     }
+
+    public function dashboard()
+    {
+        $activityTypes = ActivityType::all();
+        return view('dashboard', compact('activityTypes'));
+    }
 }
