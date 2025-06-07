@@ -13,9 +13,27 @@ class ActivityTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        $types = ['Sport', 'Fitness Class', 'Music'];
+        $types = [
+            [
+                'name' => 'Sport',
+                'image_path' => '/activity-types/sport.jpg'
+            ],
+            [
+                'name' => 'Fitness Class',
+                'image_path' => '/activity-types/fitness-class.jpg'
+            ],
+            [
+                'name' => 'Music',
+                'image_path' => '/activity-types/music-lesson.jpg'
+            ]
+        ];
+
         foreach ($types as $type) {
-            ActivityType::firstOrCreate(['name' => $type]);
+            ActivityType::firstOrCreate([
+                'name' => $type['name']
+            ], [
+                'image_path' => $type['image_path']
+            ]);
         }
     }
 }
