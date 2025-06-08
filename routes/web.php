@@ -8,16 +8,21 @@ use App\Http\Controllers\ActivityController;
 Route::get('/', [ActivityTypeController::class, 'index'])
     ->name('home');
 
+Route::get('activities', [ActivityController::class, 'index'])
+->name('activities');
+
 Route::get('dashboard', [ActivityTypeController::class, 'dashboard'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('activities', [ActivityController::class, 'index'])
-    ->name('activities');
-
-Route::get('dashboard/activities', [ActivityController::class, 'dashboard'])
+Route::get('dashboard/activities', [ActivityController::class, 'dashboardActivities'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard.activities');
+
+Route::get('dashboard/bookings', [ActivityController::class, 'dashboardBookings'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard.bookings');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

@@ -13,9 +13,19 @@ class ActivityController extends Controller
         return view('activities', ['selectedType' => $request->query('type'), 'layout' => $layout]);
     }
 
-    public function dashboard(Request $request)
+    public function dashboardActivities(Request $request)
     {
         $layout = 'layouts.app';
         return view('activities', ['selectedType' => $request->query('type'), 'layout' => $layout]);
+    }
+
+    public function dashboardBookings(Request $request)
+    {
+        $layout = 'layouts.app';
+        return view('activities', [
+            'layout' => $layout,
+            'user' => auth()->user(),
+            'selectedType' => $request->query('type')
+        ]);
     }
 }
