@@ -10,4 +10,12 @@
         </a>
         @endforeach
     </div>
+    <flux:button 
+        href="{{ Request::is('dashboard*') ? route('dashboard.activities') : route('activities') }}"
+        color="emerald"
+        icon="arrow-right"
+        class="mt-6"
+    >
+        View all activities
+    </flux:button>
 </x-dynamic-component>
