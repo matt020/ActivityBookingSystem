@@ -3,6 +3,8 @@
 use App\Models\User;
 use App\Models\Activity;
 use App\Models\ActivityType;
+use Livewire\Livewire;
+use App\Livewire\ActivityFilter;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -48,17 +50,18 @@ test('activities displayed on dashboard activities page', function () {
 });
 
 test('activities filtered on activities page', function () {
-    $response = $this->get(route('activities', ['type' => $this->activityTypes[0]->id]));
-    $response->assertStatus(200);
-    $response->assertSee($this->activities[0]->name);
-    $response->assertDontSee($this->activities[1]->name);
+    Livewire::test(ActivityFilter::class)
+        ->set('selectedType', $this->activityTypes[0]->id)
+        ->assertSee($this->activities[0]->name)
+        ->assertDontSee($this->activities[1]->name);
 });
 
 test('activities filtered on dashboard activities page', function () {
     $user = User::factory()->create();
-    $this->actingAs($user);
-    $response = $this->get(route('dashboard.activities', ['type' => $this->activityTypes[0]->id]));
-    $response->assertStatus(200);
-    $response->assertSee($this->activities[0]->name);
-    $response->assertDontSee($this->activities[1]->name);
+    
+    Livewire::actingAs($user)
+        ->test(ActivityFilter::class)
+        ->set('selectedType', $this->activityTypes[0]->id)
+        ->assertSee($this->activities[0]->name)
+        ->assertDontSee($this->activities[1]->name);
 });
