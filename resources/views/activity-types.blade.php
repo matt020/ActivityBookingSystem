@@ -6,7 +6,7 @@
             @if ($activityType->image_path)
                 <img class="mb-6 w-32" src="{{ asset('storage' . $activityType->image_path) }}" alt="{{ $activityType->name }}">
             @endif
-            <flux:text>{{ $activityType->name }}</flux:text>
+            <flux:heading>{{ $activityType->name }}</flux:heading>
         </a>
         @endforeach
     </div>
