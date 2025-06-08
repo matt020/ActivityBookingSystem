@@ -19,13 +19,12 @@ class ActivityFilter extends Component
 
     public function render()
     {
-        $activities = $this->selectedType
-            ? Activity::where('activity_type_id', $this->selectedType)->get()
+        $activities = $this->selectedType 
+            ? ActivityType::find($this->selectedType)->activities
             : Activity::all();
 
         return view('livewire.activity-filter', [
             'activities' => $activities,
         ]);
     }
-
 }

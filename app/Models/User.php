@@ -57,4 +57,13 @@ class User extends Authenticatable
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
     }
+    
+    /**
+     * Get the user's activities
+     */
+    public function activities()
+    {
+        return $this->belongsToMany(Activity::class, 'activity_bookings')
+                    ->withTimestamps();
+    }
 }

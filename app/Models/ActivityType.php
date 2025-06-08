@@ -10,4 +10,9 @@ class ActivityType extends Model
         'name',
         'image_path'
     ];
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
 }
